@@ -3,7 +3,7 @@ import { addSignUp, postUsers } from '../redux/userSlice'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = ({ history }) => {
 	const [username, setUsername] = useState('')
 	const [firstname, setFirstname] = useState('')
 	const [lastname, setLastname] = useState('')
@@ -11,7 +11,8 @@ const Signup = () => {
 	const [email, setEmail] = useState('')
 	const dispatch = useDispatch()
 
-	const postData = () => {
+	const postData = e => {
+		e.preventDefault()
 		const dataToBeSent = {
 			username: username,
 			firstname: firstname,
@@ -21,6 +22,8 @@ const Signup = () => {
 		}
 		dispatch(addSignUp(dataToBeSent))
 		dispatch(postUsers(dataToBeSent))
+		alert('Sign-Up successful')
+		history.push('/login')
 	}
 
 	return (
@@ -28,8 +31,8 @@ const Signup = () => {
 			<h1 className="mb-4">Signup</h1>
 			<form
 				className="offset-4 col-4 bg-secondary mb-4"
-				method="GET"
 				onSubmit={postData}
+				method="POST"
 			>
 				<label htmlFor="username">Enter Username</label>
 				<input
