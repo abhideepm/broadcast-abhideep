@@ -10,14 +10,15 @@ const MyPosts = () => {
 	const postsData = useSelector(selectPost)
 	const currentUser = useSelector(selectCurrentUser)
 	const displayData = postsData.filter(data => data.createdBy === currentUser)
+	console.log(displayData)
 	return (
 		<div>
 			<Navbar />
 			<div className="mt-3 offset-2 col-8 bg-light text-dark rounded">
 				<h3>My Posts</h3>
 				<ul className="list-unstyled">
-					{displayData === undefined ? (
-						<li>You haven't created any posts</li>
+					{displayData.length === 0 ? (
+						<li className="h3 text-muted">You haven't created any posts</li>
 					) : (
 						displayData.map(data => (
 							<li key={data.id} className="my-3 h3">

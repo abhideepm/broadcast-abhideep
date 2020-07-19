@@ -10,12 +10,13 @@ import CreatePost from './Dashboard/CreatePost'
 import Dashboard from './Dashboard/Dashboard'
 import MyPosts from './Dashboard/MyPosts'
 import MyProfile from './Dashboard/MyProfile'
+import Post from './Dashboard/Post'
 import Header from './Header/Header'
 import Login from './Login/Login'
 import Signup from './Login/Signup'
+import { setLogin } from './redux/loginSlice'
 import { fetchPosts } from './redux/postSlice'
 import { fetchUsers } from './redux/userSlice'
-import Post from './Dashboard/Post'
 
 const App = () => {
 	const dispatch = useDispatch()
@@ -23,6 +24,10 @@ const App = () => {
 	useEffect(() => {
 		dispatch(fetchUsers())
 		dispatch(fetchPosts())
+		const val = localStorage.getItem('userid')
+		if (val !== undefined) {
+			dispatch(setLogin(val))
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 

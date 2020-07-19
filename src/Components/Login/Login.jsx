@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { login } from '../redux/loginSlice'
+import { login, selectLoggedIn } from '../redux/loginSlice'
 import { selectUser } from '../redux/userSlice'
 
 const Login = ({ history }) => {
 	const userData = useSelector(selectUser)
 	const dispatch = useDispatch()
+	const loggedIn = useSelector(selectLoggedIn)
 
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+
+	useEffect(() => {
+		if (loggedIn) history.push('/dashboard')
+	})
 
 	const loginValidation = e => {
 		e.preventDefault()
