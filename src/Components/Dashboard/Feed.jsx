@@ -13,6 +13,7 @@ const Feed = () => {
 				{postdata.map(data => (
 					<li key={data.id} className="my-3 h3">
 						<Link to={`/dashboard/post/${data.id}`}>{data.title}</Link>
+						<h5 className="text-muted">{data.createdBy}</h5>
 						<h5>
 							{formatDistance(new Date(data.createdAt), new Date(), {
 								addSuffix: true,

@@ -41,7 +41,7 @@ const App = () => {
 					<Route path="/dashboard" exact component={Dashboard} />
 					<Route path="/dashboard/myposts" exact component={MyPosts} />
 					<Route path="/dashboard/createpost" exact component={CreatePost} />
-					<Route path="/dashboard/:who" exact component={MyProfile} />
+					<Route path="/dashboard/myprofile" exact component={MyProfile} />
 					<Route path="/dashboard/post/:id" exact component={Post} />
 					<Redirect from="/" to="/login" />
 				</Switch>

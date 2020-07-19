@@ -38,10 +38,12 @@ const CreatePost = ({ history }) => {
 					placeholder="Enter title of post you want to create"
 					value={title}
 					onChange={e => setTitle(e.target.value)}
+					required
 				/>
 				<label htmlFor="content" className="h3 mt-2">
 					Content
 				</label>
+				<p>{'(' + +(150 - content.length) + ' ' + 'characters remaining)'}</p>
 				<textarea
 					type="text"
 					name="content"
@@ -51,9 +53,9 @@ const CreatePost = ({ history }) => {
 					value={content}
 					onChange={e => {
 						if (e.target.value.length <= 150) setContent(e.target.value)
-						else alert('The post limit is 150 characters')
 					}}
 					rows="8"
+					required
 				/>
 				<input
 					type="submit"

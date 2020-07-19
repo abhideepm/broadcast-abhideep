@@ -25,7 +25,7 @@ const Navbar = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to={`/dashboard/${currentUser}`}>
+						<Link to={`/dashboard/myprofile`}>
 							<h4>My Profile</h4>
 						</Link>
 					</li>
