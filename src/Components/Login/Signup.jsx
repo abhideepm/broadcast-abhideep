@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { postUsers } from '../redux/userSlice'
+import { postUsers, selectUser } from '../redux/userSlice'
 
 const Signup = ({ history }) => {
 	const [username, setUsername] = useState('')
@@ -9,20 +9,26 @@ const Signup = ({ history }) => {
 	const [lastname, setLastname] = useState('')
 	const [password, setPassword] = useState('')
 	const [email, setEmail] = useState('')
+	const userData = useSelector(selectUser)
 	const dispatch = useDispatch()
 
 	const postData = e => {
 		e.preventDefault()
-		const dataToBeSent = {
-			username: username,
-			firstname: firstname,
-			lastname: lastname,
-			password: password,
-			email: email,
+		const findUser = userData.find(data => data.username === username)
+		if (findUser === undefined) {
+			const dataToBeSent = {
+				username: username,
+				firstname: firstname,
+				lastname: lastname,
+				password: password,
+				email: email,
+			}
+			dispatch(postUsers(dataToBeSent))
+			alert('Sign-Up successful')
+			history.push('/login')
+		} else {
+			alert('Username already exists')
 		}
-		dispatch(postUsers(dataToBeSent))
-		alert('Sign-Up successful')
-		history.push('/login')
 	}
 
 	return (

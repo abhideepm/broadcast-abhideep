@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { selectCurrentUser } from '../redux/loginSlice'
+import { logout } from '../redux/loginSlice'
 
 const Navbar = () => {
-	const currentUser = useSelector(selectCurrentUser)
+	const dispatch = useDispatch()
 	return (
 		<div>
 			<div className="bg-light text-dark mt-3">
@@ -30,7 +30,7 @@ const Navbar = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/login">
+						<Link to="/login" onClick={() => dispatch(logout())}>
 							<h4>Log Out</h4>
 						</Link>
 					</li>

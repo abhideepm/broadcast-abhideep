@@ -25,7 +25,8 @@ const App = () => {
 		dispatch(fetchUsers())
 		dispatch(fetchPosts())
 		const val = localStorage.getItem('userid')
-		if (val !== undefined) {
+		console.log('val', val)
+		if (val !== null) {
 			dispatch(setLogin(val))
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

@@ -16,10 +16,15 @@ export const loginSlice = createSlice({
 			state.loggedIn = true
 			state.currentUser = action.payload
 		},
+		logout: state => {
+			localStorage.clear()
+			state.loggedIn = false
+			state.currentUser = ''
+		},
 	},
 })
 
-export const { login, setLogin } = loginSlice.actions
+export const { login, setLogin, logout } = loginSlice.actions
 
 export const selectLoggedIn = state => state.login.loggedIn
 export const selectCurrentUser = state => state.login.currentUser
