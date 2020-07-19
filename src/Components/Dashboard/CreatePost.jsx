@@ -4,13 +4,14 @@ import Navbar from '../Header/Navbar'
 import { selectCurrentUser } from '../redux/loginSlice'
 import { postPosts } from '../redux/postSlice'
 
-const CreatePost = () => {
+const CreatePost = ({ history }) => {
 	const [title, setTitle] = useState('')
 	const [content, setContent] = useState('')
 	const currentUser = useSelector(selectCurrentUser)
 	const dispatch = useDispatch()
 
-	const postData = () => {
+	const postData = e => {
+		e.preventDefault()
 		const dataToBeAdded = {
 			title: title,
 			content: content,
@@ -18,13 +19,14 @@ const CreatePost = () => {
 			createdBy: currentUser,
 		}
 		dispatch(postPosts(dataToBeAdded))
+		history.push('/dashboard')
 	}
 
 	return (
 		<div>
 			<Navbar />
 			<h1 className="mt-3">What's in your mind?</h1>
-			<form onSubmit={postData}>
+			<form onSubmit={postData} method="POST">
 				<label htmlFor="title" className="h3 mt-2">
 					Title
 				</label>

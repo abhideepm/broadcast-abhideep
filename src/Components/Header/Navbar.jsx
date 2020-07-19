@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { selectUser } from '../redux/userSlice'
+import { selectCurrentUser } from '../redux/loginSlice'
 
 const Navbar = () => {
-	const userData = useSelector(selectUser)
+	const currentUser = useSelector(selectCurrentUser)
 	return (
 		<div>
 			<div className="bg-light text-dark mt-3">
@@ -25,7 +25,7 @@ const Navbar = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/dashboard">
+						<Link to={`/dashboard/${currentUser}`}>
 							<h4>My Profile</h4>
 						</Link>
 					</li>

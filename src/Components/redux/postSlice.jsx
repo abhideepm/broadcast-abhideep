@@ -10,7 +10,7 @@ export const postSlice = createSlice({
 			state.postData = action.payload
 		},
 		addCreatePost: (state, action) => {
-			state.postData.push(action.payload)
+			state.postData.unshift(action.payload)
 		},
 	},
 })
@@ -18,7 +18,9 @@ export const postSlice = createSlice({
 export const { init, addCreatePost } = postSlice.actions
 
 export const fetchPosts = () => dispatch => {
-	fetch('https://broadcast-social-database.herokuapp.com/posts')
+	fetch(
+		'https://broadcast-social-database.herokuapp.com/posts?_sort=createdAt&_order=desc'
+	)
 		.then(res => {
 			if (res.ok) return res.json()
 			else return new Error('Fetch Failed')
