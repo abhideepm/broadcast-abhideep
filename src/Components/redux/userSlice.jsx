@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const userSlice = createSlice({
-	name: 'user',
+	name: 'users',
 	initialState: {
 		userData: [],
 	},
@@ -39,6 +39,6 @@ export const postUsers = data => dispatch => {
 	})
 }
 
-export const selectUser = state => state.user.userData
+export const selectUser = state => state.users.userData
 
 export default userSlice.reducer

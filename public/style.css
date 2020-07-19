@@ -1,5 +1,5 @@
 body {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Oswald', sans-serif !important;
 	background: #0f0c29; /* fallback for old browsers */
 	background: -webkit-linear-gradient(
 		to right,

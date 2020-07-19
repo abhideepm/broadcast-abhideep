@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { selectUser } from '../redux/userSlice'
 
 const Navbar = () => {
+	const userData = useSelector(selectUser)
 	return (
 		<div>
 			<div className="bg-light text-dark mt-3">
