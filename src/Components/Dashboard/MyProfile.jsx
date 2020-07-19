@@ -4,7 +4,7 @@ import Navbar from '../Header/Navbar'
 import { selectCurrentUser } from '../redux/loginSlice'
 import { selectUser } from '../redux/userSlice'
 
-const MyProfile = () => {
+const MyProfile = ({ history }) => {
 	const currentUser = useSelector(selectCurrentUser)
 	const userData = useSelector(selectUser)
 	const displayData = userData.find(data => data.username === currentUser)
@@ -27,6 +27,15 @@ const MyProfile = () => {
 						<h4 className="card-text">
 							<b>Last Name:</b> {displayData.lastname}
 						</h4>
+						<h4 className="card-text">
+							<b>Status:</b> {displayData.status}
+						</h4>
+						<button
+							className="btn btn-success btn-lg"
+							onClick={() => history.push('/dashboard/editprofile')}
+						>
+							Edit Profile
+						</button>
 					</div>
 				</div>
 			) : null}

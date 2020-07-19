@@ -17,6 +17,7 @@ import Signup from './Login/Signup'
 import { setLogin } from './redux/loginSlice'
 import { fetchPosts } from './redux/postSlice'
 import { fetchUsers } from './redux/userSlice'
+import EditProfile from './Dashboard/EditProfile'
 
 const App = () => {
 	const dispatch = useDispatch()
@@ -25,7 +26,6 @@ const App = () => {
 		dispatch(fetchUsers())
 		dispatch(fetchPosts())
 		const val = localStorage.getItem('userid')
-		console.log('val', val)
 		if (val !== null) {
 			dispatch(setLogin(val))
 		}
@@ -44,6 +44,7 @@ const App = () => {
 					<Route path="/dashboard/createpost" exact component={CreatePost} />
 					<Route path="/dashboard/myprofile" exact component={MyProfile} />
 					<Route path="/dashboard/post/:id" exact component={Post} />
+					<Route path="/dashboard/editprofile" exact component={EditProfile} />
 					<Redirect from="/" to="/login" />
 				</Switch>
 			</Router>

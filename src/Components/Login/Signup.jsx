@@ -22,6 +22,7 @@ const Signup = ({ history }) => {
 				lastname: lastname,
 				password: password,
 				email: email,
+				status: 'Available',
 			}
 			dispatch(postUsers(dataToBeSent))
 			alert('Sign-Up successful')

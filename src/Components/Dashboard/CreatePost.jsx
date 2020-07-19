@@ -43,7 +43,7 @@ const CreatePost = ({ history }) => {
 				<label htmlFor="content" className="h3 mt-2">
 					Content
 				</label>
-				<p>{'(' + +(150 - content.length) + ' ' + 'characters remaining)'}</p>
+				<p>{'(' + +(150 - content.length) + ' characters remaining)'}</p>
 				<textarea
 					type="text"
 					name="content"

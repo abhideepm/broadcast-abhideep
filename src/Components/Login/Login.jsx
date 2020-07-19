@@ -13,7 +13,6 @@ const Login = ({ history }) => {
 	const [password, setPassword] = useState('')
 
 	useEffect(() => {
-		console.log(loggedIn)
 		if (loggedIn) history.push('/dashboard')
 	})
 
