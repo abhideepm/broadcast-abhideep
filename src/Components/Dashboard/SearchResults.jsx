@@ -11,6 +11,7 @@ const SearchResults = () => {
 	if (searchQuery !== '') {
 		searchResults = userData.filter(data => data.username.includes(searchQuery))
 	}
+
 	return (
 		<div>
 			<Navbar />
