@@ -13,7 +13,7 @@ const Login = ({ history }) => {
 	const [password, setPassword] = useState('')
 
 	useEffect(() => {
-		if (loggedIn) history.push('/dashboard')
+		if (loggedIn) history.push('/dashboard/feed')
 	})
 
 	const loginValidation = e => {
@@ -24,7 +24,7 @@ const Login = ({ history }) => {
 		if (validate === undefined) alert('Invalid login')
 		else {
 			dispatch(login(validate.username))
-			history.push('/dashboard')
+			history.push('/dashboard/feed')
 		}
 	}
 

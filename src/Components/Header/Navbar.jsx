@@ -3,14 +3,15 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../redux/loginSlice'
 
-const Navbar = () => {
+const Navbar = ({ history }) => {
 	const dispatch = useDispatch()
+
 	return (
 		<div>
 			<div className="bg-light text-dark mt-3">
 				<ul className="d-flex list-unstyled justify-content-between py-1 mx-5">
 					<li>
-						<Link to="/dashboard">
+						<Link to="/dashboard/feed">
 							<h4>Home</h4>
 						</Link>
 					</li>
@@ -36,13 +37,6 @@ const Navbar = () => {
 					</li>
 				</ul>
 			</div>
-			<input
-				type="text"
-				name="search"
-				id="search"
-				placeholder="Search"
-				className="form-control form-control-lg offset-2 col-8"
-			/>
 		</div>
 	)
 }

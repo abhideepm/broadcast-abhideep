@@ -7,17 +7,18 @@ import {
 	Switch,
 } from 'react-router-dom'
 import CreatePost from './Dashboard/CreatePost'
-import Dashboard from './Dashboard/Dashboard'
+import Feed from './Dashboard/Feed'
+import EditProfile from './Dashboard/EditProfile'
 import MyPosts from './Dashboard/MyPosts'
 import MyProfile from './Dashboard/MyProfile'
 import Post from './Dashboard/Post'
+import SearchResults from './Dashboard/SearchResults'
 import Header from './Header/Header'
 import Login from './Login/Login'
 import Signup from './Login/Signup'
 import { setLogin } from './redux/loginSlice'
 import { fetchPosts } from './redux/postSlice'
 import { fetchUsers } from './redux/userSlice'
-import EditProfile from './Dashboard/EditProfile'
 
 const App = () => {
 	const dispatch = useDispatch()
@@ -39,12 +40,17 @@ const App = () => {
 				<Switch>
 					<Route path="/login" component={Login} />
 					<Route path="/signup" component={Signup} />
-					<Route path="/dashboard" exact component={Dashboard} />
 					<Route path="/dashboard/myposts" exact component={MyPosts} />
 					<Route path="/dashboard/createpost" exact component={CreatePost} />
 					<Route path="/dashboard/myprofile" exact component={MyProfile} />
 					<Route path="/dashboard/post/:id" exact component={Post} />
 					<Route path="/dashboard/editprofile" exact component={EditProfile} />
+					<Route path="/dashboard/feed" exact component={Feed} />
+					<Route
+						path="/dashboard/searchresults"
+						exact
+						component={SearchResults}
+					/>
 					<Redirect from="/" to="/login" />
 				</Switch>
 			</Router>
