@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { login } from '../redux/loginSlice'
 import { selectUser } from '../redux/userSlice'
 
 const Login = ({ history }) => {
 	const userData = useSelector(selectUser)
+	const dispatch = useDispatch()
+
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
@@ -15,6 +18,7 @@ const Login = ({ history }) => {
 		)
 		if (validate === undefined) alert('Invalid login')
 		else {
+			dispatch(login(validate.username))
 			history.push('/dashboard')
 		}
 	}

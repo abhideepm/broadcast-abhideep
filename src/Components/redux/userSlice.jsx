@@ -30,6 +30,7 @@ export const fetchUsers = () => dispatch => {
 }
 
 export const postUsers = data => dispatch => {
+	dispatch(addSignUp(data))
 	fetch('https://broadcast-social-database.herokuapp.com/users', {
 		method: 'POST',
 		headers: {

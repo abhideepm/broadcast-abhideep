@@ -9,10 +9,13 @@ export const postSlice = createSlice({
 		init: (state, action) => {
 			state.postData = action.payload
 		},
+		addCreatePost: (state, action) => {
+			state.postData.push(action.payload)
+		},
 	},
 })
 
-export const { init } = postSlice.actions
+export const { init, addCreatePost } = postSlice.actions
 
 export const fetchPosts = () => dispatch => {
 	fetch('https://broadcast-social-database.herokuapp.com/posts')
@@ -27,6 +30,7 @@ export const fetchPosts = () => dispatch => {
 }
 
 export const postPosts = data => dispatch => {
+	dispatch(addCreatePost(data))
 	fetch('https://broadcast-social-database.herokuapp.com/posts', {
 		method: 'POST',
 		headers: {

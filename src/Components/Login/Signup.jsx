@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { addSignUp, postUsers } from '../redux/userSlice'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { postUsers } from '../redux/userSlice'
 
 const Signup = ({ history }) => {
 	const [username, setUsername] = useState('')
@@ -20,7 +20,6 @@ const Signup = ({ history }) => {
 			password: password,
 			email: email,
 		}
-		dispatch(addSignUp(dataToBeSent))
 		dispatch(postUsers(dataToBeSent))
 		alert('Sign-Up successful')
 		history.push('/login')
